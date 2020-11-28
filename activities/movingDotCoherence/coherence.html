@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="../../javascript/plotly-latest.min.js"></script>
+  <title>Moving Dot Coherence Demo</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="instructions">
+      <h1>Background</h1>
+      <p>
+        <b>TODO:</b> Write Me
+      </p>
+      <h1>Instructions</h1>
+      <p>
+        For each grating of moving dots, press "l" if the dots are moving to the left, and "r" if
+        the dots are moving to the right. 
+      </p>
+    </div>
+    <div class="centered">
+      <button onclick="startSession()">Start</button>
+      <button onclick="endSession()">End</button>
+      <button id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
+    </div>
+    <div class="centered">
+      <canvas id="dotCanvas" with="300" height="300"></canvas>
+    </div>
+    <div id="figure" style="width:600px;height:250px;"></div>
+  <script src="coherence.js"></script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="../../javascript/plotly-latest.min.js"></script>
+  <title>VMR Demo</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="instructions">
+      <h1>Background</h1>
+      <p>
+        <b>TODO:</b> Write Me
+      </p>
+      <h1>Instructions</h1>
+      <p>
+        Move the cursor (yellow dot), to the the starting position (gray circle). When the cursor
+        turns blue, move it to the target (green circle). 
+      </p>
+    </div>
+    <div class="centered">
+      <button onclick="startSession()">Start</button>
+      <button onclick="endSession()">End</button>
+      <button id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
+    </div>
+    <div class="centered">
+      <canvas id="vmrCanvas" width="600" height="500"></canvas>
+    </div>
+    <div id="figure" style="width:600px;height:250px;"></div>
+  <script src="vmr.js"></script>
+</body>
+</html>

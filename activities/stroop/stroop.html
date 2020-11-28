@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="../../javascript/plotly-latest.min.js"></script>
+  <title>Stroop Effect Demo</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="instructions">
+      <h1>Background</h1>
+      <p>
+        <b>TODO:</b> Write Me
+      </p>
+      <h1>Instructions</h1>
+      <p>
+        For each word that appears, press the correct key corresponding to the <b>color</b> of the
+        word, not the word itself. 
+      </p>
+      <p style="color:green">1-Green</p>
+      <p style="color:red">2-Red</p>
+      <p style="color:blue">3-Blue</p>
+      <p style="color:yellow">4-Yellow</p>
+    </div>
+    <div class="centered">
+      <button onclick="startSession()">Start</button>
+      <button onclick="endSession()">End</button>
+      <button id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
+      <p id="wordDisplay"></p>
+    </div>
+    <p id="rightWrong"</p> 
+    <p id="reactionTime"</p>
+  <div id="figure" style="width:600px;height:250px;"></div>
+  <script src="stroop.js"></script>
+</body>
+</html>

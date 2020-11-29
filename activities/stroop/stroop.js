@@ -36,7 +36,13 @@ function startSession() {
     x: ["Congruent", "Incongruent"],
     y: [0, 0],
     type: 'bar'
-    }]);
+    }],
+    {
+      yaxis: {
+        title: "Reaction Time (ms)"
+      },
+    }
+  );
   newTrial();
 }
 

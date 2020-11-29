@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="../../javascript/plotly-latest.min.js"></script>
+  <title>Posner Attention Task Demo</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="instructions">
+      <h1>Background</h1>
+      <p>
+        <b>TODO:</b> Write Me
+      </p>
+      <h1>Instructions</h1>
+      <p>
+        Fixate on the center cross. Hit the space bar when you see the stimulus
+      </p>
+    </div>
+    <div class="centered">
+      <button onclick="startSession()">Start</button>
+      <button onclick="endSession()">End</button>
+      <button id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
+    </div>
+    <div class="centered">
+      <canvas id="posnerCanvas" width="1000" height="500"></canvas>
+    </div>
+    <div id="figure" style="width:600px;height:250px;"></div>
+  <script src="posner.js"></script>
+</body>
+</html>

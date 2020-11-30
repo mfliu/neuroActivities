@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="../../javascript/plotly-latest.min.js"></script>
-  <title>Stroop Effect Demo</title>
+  <title>Stroop Effect</title>
 </head>
 
 <body>
@@ -13,7 +13,17 @@
     <div class="instructions">
       <h1>Background</h1>
       <p>
-        <b>TODO:</b> Write Me
+        When neural engineers are developing technologies such as neural prosthetics, one important
+        aspect to consider is the restoration of sensory feedback. Engineers can use many different
+        ways to provide sensory information to a prosthetic user, but it is important to quantify
+        how well the chosen sensory feedback modality works. One way to measure the usability of
+        sensory feedback is by using the <b>Stroop task</b>. The Stroop task is taken from a study
+        by John Ridley Stroop in 1935, which found that people responded faster to congruent stimuli
+        than incongruent stimuli. In the study, Stroop presented subjects with names of colors
+        written in colors that either matched the name (congruent) or did not match the name
+        (incongruent). He asked subjects to report the color of the word and not the name of the
+        word, and found that subjects responded faster to the congruent words than the incongruent
+        words. Try the Stroop task out for yourself and see how your reaction times measure up!
       </p>
       <h1>Instructions</h1>
       <p>
@@ -24,6 +34,11 @@
       <p style="color:red">2-Red</p>
       <p style="color:blue">3-Blue</p>
       <p style="color:yellow">4-Yellow</p>
+      <p>
+        The graph will show your reaction times in real time. You can press "End Session" to end
+        your session, upon which you can choose to save your data as a CSV file. If you do not press
+        the "End Session" button, the session will end after 500 trials. 
+      </p>
     </div>
     <div class="centered">
       <button onclick="startSession()">Start</button>
@@ -31,9 +46,12 @@
       <button id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
       <p id="wordDisplay"></p>
     </div>
-    <p id="rightWrong"</p> 
-    <p id="reactionTime"</p>
-  <div id="figure" style="width:600px;height:250px;"></div>
+    <div class="centered">
+      <canvas id="stroopCanvas" width="500" height="500"></canvas>
+    </div>
+    <!--<p id="rightWrong"</p> 
+    <p id="reactionTime"</p>-->
+    <div id="figure" style="width:600px;height:250px;"></div>
   <script src="stroop.js"></script>
 </body>
 </html>

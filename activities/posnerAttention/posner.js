@@ -83,7 +83,7 @@ async function newTrial() {
   
   fixationScreen();
   state.taskState = "interStim";
-  await sleep(1000);
+  await sleep(Math.floor(Math.random() * 1000) + 1000);
   
   stimulusScreen();
   state.taskState = "stimulus";

@@ -13,6 +13,7 @@ var state = {
   currentWord: null,
   startTime: null,
   correct: null,
+  canvas: document.getElementById('stroopCanvas'),
   figure: document.getElementById('figure')
 };
 
@@ -59,9 +60,10 @@ function newTrial() {
   state.currentColor = ColorNames[Math.floor(Math.random() * ColorNames.length)];
   
   // Display the word in the color
-  const wordDisplay = document.getElementById('wordDisplay');
-  wordDisplay.innerText = state.currentWord;
-  wordDisplay.style.color = state.currentColor;
+  //const wordDisplay = document.getElementById('wordDisplay');
+  //wordDisplay.innerText = state.currentWord;
+  //wordDisplay.style.color = state.currentColor;
+  presentationScreen(state.currentWord, state.currentColor);
   state.startTime = new Date();
 }
 
@@ -69,6 +71,17 @@ function newTrial() {
 document.onkeypress = function(e) {
   const char = parseInt(String.fromCharCode(event.which || event.keyCode));
   checkAnswer(char);
+}
+
+// Screens
+function presentationScreen(text, color) {
+  let context = state.canvas.getContext("2d");
+  context.fillStyle = "black";
+  context.fillRect(0, 0, state.canvas.width, state.canvas.height);
+  context.font = "100px Consolas";
+  context.fillStyle = color;
+  context.textAlign = "center";
+  context.fillText(text, state.canvas.width/2, state.canvas.height/2+25);
 }
 
 // Check if the answer was correct
@@ -81,10 +94,10 @@ function checkAnswer(answerIdx) {
   data.reactionTimes.push(trialTime);
 
   if(ColorNames[answerIdx-1] === state.currentColor) {
-    const rightWrong = document.getElementById('rightWrong');
-    rightWrong.innerText = "Correct";
-    const reactionTime = document.getElementById('reactionTime');
-    reactionTime.innerText = "Reaction Time: ".concat(trialTime.toString(), " ms");
+    //const rightWrong = document.getElementById('rightWrong');
+    //rightWrong.innerText = "Correct";
+    //const reactionTime = document.getElementById('reactionTime');
+    //reactionTime.innerText = "Reaction Time: ".concat(trialTime.toString(), " ms");
     state.correct = true;
     if (state.currentColor === state.currentWord) {
       data.congruent.push(trialTime);
@@ -95,16 +108,16 @@ function checkAnswer(answerIdx) {
   }
   else {
     // TODO: Display failure somehow
-    const rightWrong = document.getElementById('rightWrong');
-    rightWrong.innerText = "Incorrect";
-    const reactionTime = document.getElementById('reactionTime');
-    reactionTime.innerText = "";
+    //const rightWrong = document.getElementById('rightWrong');
+    //rightWrong.innerText = "Incorrect";
+    //const reactionTime = document.getElementById('reactionTime');
+    //reactionTime.innerText = "";
     state.correct = false;
     data.incorrect.push(trialTime);
   }
   plotData();
   state.numTrials += 1;
-  console.log(state.numTrials);
+  //console.log(state.numTrials);
   newTrial();
 }
 

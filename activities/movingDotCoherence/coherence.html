@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="../../javascript/plotly-latest.min.js"></script>
-  <title>Moving Dot Coherence Demo</title>
+  <title>Moving Dot Coherence</title>
 </head>
 
 <body>
@@ -13,12 +13,38 @@
     <div class="instructions">
       <h1>Background</h1>
       <p>
-        <b>TODO:</b> Write Me
+        How do our brains make decisions about the things we see? In order to study the neural basis
+        of decision making, Shadlen and Newsome devised an experiment in which nonhuman primates
+        were trained to make decisions about whether a cloud of moving dots was moving to the left
+        or the right. They changed the proportion of dots moving to the left or right from 100%
+        left, to 50% left and 50% right, and 100% right. They recorded from neurons in a brain
+        region called MT, and found that MT neurons encoded the subject's choice by a simple voting
+        method. In particular, they found that individual neurons in MT responded either to
+        rightward motion or leftward motion. When the dots were all moving to the right, only the
+        rightward motion neurons responded. Similarly, when all the dots were moving to the left,
+        only the leftward neurons responded. When half the dots were moving to the right and half
+        the dots were moving to the left, however, Shadlen and Newsome found that they could predict
+        the choice the monkey was going to make based on how many rightward neurons were responding
+        compared to leftward neurons. 
+          
+        In the moving-dot coherence task, when 50% of the dots
+        are moving to the left and 50% of dots are moving to the right, theoretically one has no
+        idea which direction the dots are moving as a whole. Neurons in MT, however, can have a
+        <b>bias</b> towards one particular direction. Thus, if you choose left or right over 50% 
+        of the time when the dots are moving evenly in both directions, this suggests that you have
+        a preference for movement to the right or left. If 55% of dots are moving
+        in one direction, it may still be difficult to discern which direction the dots are moving
+        in. As the proportion of dots moving towards a particular direction increases, however, you
+        become more and more certain of the direction. Try it yourself below!
       </p>
       <h1>Instructions</h1>
       <p>
-        For each grating of moving dots, press "l" if the dots are moving to the left, and "r" if
-        the dots are moving to the right. 
+        First, a screen with a cross will be presented. Focus on the cross for several moments.
+        After this, a screen of moving dots will appear for several seconds, after which you will
+        see a cross that is green. When the cross is green, press "l" if the dots you saw were
+        moving to the left, and press "r" if the dots were moving to the right. The plot below will
+        show you the proportion of trials you indicated were rightward for each proportion of dots
+        moving rightward (0% rightward means that 100% of the dots were moving to the left).
       </p>
     </div>
     <div class="centered">

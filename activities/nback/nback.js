@@ -73,6 +73,8 @@ async function newTrial() {
   state.taskState = "cue";
   await sleep(1000);
   plotData();
+  baseGraphics();
+  await sleep(10);
   newTrial();
   
 }
@@ -92,6 +94,12 @@ function instructionScreen(nBack) {
   context.textAlign = "center";
   context.fillText(nBack.toString().concat("-Back"), 
         state.canvas.width/2-25, state.canvas.height/2+25);
+}
+
+function baseGraphics() {
+  let context = state.canvas.getContext("2d");
+  context.fillStyle = "black";
+  context.fillRect(0, 0, state.canvas.width, state.canvas.height);
 }
 
 function generateCue() {

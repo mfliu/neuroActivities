@@ -1,6 +1,6 @@
 const BaselineTrials = 5;
-const VMRTrials = 5;
-const WashoutTrials = 5;
+const VMRTrials = 15;
+const WashoutTrials = 10;
 const Rotation = 30; // degrees
 
 // Task state variables 
@@ -29,15 +29,15 @@ var data = {
 
 function startSession() {
   Plotly.newPlot( state.figure, [{
-    x: [0, 100], 
-    y: [0, 0],
+    x: [], 
+    y: [],
     }],
     {
       xaxis: {
-        title: "VMR Trial Number"
+        title: "X Position"
       },
       yaxis: {
-        title: "Angular Error"
+        title: "Y Position"
       },
     }
   );
@@ -128,7 +128,7 @@ state.canvas.onmousemove = function(e) {
     context.linewidth = 1;
     context.stroke;
     
-    appendData(e.offsetX, e.offsetY, e.offsetX, e.offsetY);
+    //appendData(e.offsetX, e.offsetY, e.offsetX, e.offsetY);
   }
   
   if (startCheck(e.offsetX, e.offsetY) === true) {
@@ -199,6 +199,7 @@ function runTrial(posX, posY) {
 
 async function endTrial() {
   baseGraphics();
+  plotData();
   state.running = false;
   state.numTrials += 1;
   await sleep(500);
@@ -206,17 +207,45 @@ async function endTrial() {
 }
 
 function plotData() {
-  var dataPoints = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0];
-  for (let i = 0; i < coherenceList.length; i++) {
-    let listName = "coh".concat((Math.round(coherenceList[i] * 100)).toString());
-    if (data[listName].length > 0) {
-      dataPoints[i] = data[listName].reduce((a,b) => a+b, 0.0) / data[listName].length;
-    }
+  let startIdx = data.trialNum.indexOf(state.numTrials);
+  let endIdx = data.trialNum.lastIndexOf(state.numTrials);
+  let trialX = data.cursorX.slice(startIdx, endIdx);
+  let trialY = data.cursorY.slice(startIdx, endIdx);
+  let plotColor;
+  let opacity;
+  if (state.trialType === "baseline") {
+    plotColor = 'black';
+    plotName = "BL".concat(state.numTrials.toString());
   }
-  Plotly.react(figure,  [{
-    x: coherenceList,
-    y: dataPoints,
-    }]);
+  else if (state.trialType === "vmr") {
+    plotColor = 'blue';
+    opacity = (state.numTrials - BaselineTrials)/VMRTrials;
+    plotName = "VMR".concat(state.numTrials-BaselineTrials.toString());
+  }
+  else if (state.trialType === "washout") {
+    plotColor = 'pink';
+    opacity = (state.numTrials - VMRTrials)/WashoutTrials;
+    plotName = "WO".concat(state.numTrials-VMRTrials.toString());
+  }
+  console.log(opacity);
+  Plotly.plot(figure,  [{
+    x: trialX,
+    y: trialY,
+    opacity: opacity,
+    name: plotName,
+    line: {
+      color: plotColor,
+    }
+    }],
+    {
+      xaxis: {
+        title: "X Position"
+      },
+      yaxis: {
+        title: "Y Position"
+      },
+    }
+  );
 }
 
 

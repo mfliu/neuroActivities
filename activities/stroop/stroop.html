@@ -5,13 +5,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="../../javascript/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../../css/main.css">
   <title>Stroop Effect</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="instructions">
-      <h1>Background</h1>
+  <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+    <a id="bar-title" class="navbar-brand" href="../../index.html">Neuroscience Activities</a>
+    <div class="navbar-nav-scroll">
+      <ul class="navbar-nav bd-navbar-nav flex-row">
+        <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link"
+                          href="https://github.com/mfliu/neuroActivitiesWebsite">Source</a></li>
+        <li class="nav-item"><a class="nav-link" 
+            href="mailto:monicaliu@pitt.edu">Feedback</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container-fluid">
+    <main class="bd-content" role="main">
+    <h1 class="bd-title">Stroop Task</h1>
+      <div class="instructions">
+      <h2>Background</h2>
       <p>
         When neural engineers are developing technologies such as neural prosthetics, one important
         aspect to consider is the restoration of sensory feedback. Engineers can use many different
@@ -25,7 +44,7 @@
         word, and found that subjects responded faster to the congruent words than the incongruent
         words. Try the Stroop task out for yourself and see how your reaction times measure up!
       </p>
-      <h1>Instructions</h1>
+      <h2>Instructions</h2>
       <p>
         For each word that appears, press the correct key corresponding to the <b>color</b> of the
         word, not the word itself. 
@@ -41,17 +60,23 @@
       </p>
     </div>
     <div class="centered">
-      <button onclick="startSession()">Start</button>
-      <button onclick="endSession()">End</button>
-      <button id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
+      <button type="button" class="btn btn-dark" onclick="startSession()">Start</button>
+      <button type="button" class="btn btn-dark" onclick="endSession()">End</button>
+      <button type="button" class="btn btn-dark" id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
       <p id="wordDisplay"></p>
     </div>
-    <div class="centered">
-      <canvas id="stroopCanvas" width="500" height="500"></canvas>
+    <div class="jumbotron">
+      <div class="d-flex flex-row">
+        <div class="p-2">
+          <canvas id="stroopCanvas" width="500" height="500"></canvas>
+        </div>
+        <div class="p-2">
+          <div id="figure" style="width:500px;height:500px;"></div>
+        </div>
+      </div>
     </div>
-    <!--<p id="rightWrong"</p> 
-    <p id="reactionTime"</p>-->
-    <div id="figure" style="width:600px;height:250px;"></div>
+    </main>
+  </div>
   <script src="stroop.js"></script>
 </body>
 </html>

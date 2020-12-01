@@ -5,13 +5,33 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="../../javascript/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="../../css/main.css">
   <title>Posner Attention Task Demo</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="instructions">
-      <h1>Background</h1>
+  <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+    <a id="bar-title" class="navbar-brand" href="../../index.html">Neuroscience Activities</a>
+    <div class="navbar-nav-scroll">
+      <ul class="navbar-nav bd-navbar-nav flex-row">
+        <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link"
+                          href="https://github.com/mfliu/neuroActivitiesWebsite">Source</a></li>
+        <li class="nav-item"><a class="nav-link" 
+            href="mailto:monicaliu@pitt.edu">Feedback</a></li>
+      </ul>
+    </div>
+  </header>
+  
+  <div class="container-fluid">
+    <main class="bd-content" role="main">
+    <h1 class="bd-title">Posner Attention Task</h1>
+      <div class="instructions">
+      <h2>Background</h2>
       <p>
         What draws attention? The Posner attention task measures reaction times to the appearance of
         certain stimuli after a variety of different types of cues. Subjects are told to focus on a
@@ -24,23 +44,31 @@
         As might be expected, reaction times are faster when subjects are provided with valid cues
         compared to invalid cues. 
       </p>
-      <h1>Instructions</h1>
+      <h2>Instructions</h2>
       <p>
         Fixate on the center cross. An arrow will replace the cross to indicate a direction 
         (left or right) of where the stimulus will appear. Alternatively, either the left square or
         the right square will be highlighted with bold lines to cue the stimulus location. After the
         cue disappears, the stimulus will appear. Hit the space bar when you see the stimulus.
       </p>
-    </div>
-    <div class="centered">
-      <button onclick="startSession()">Start</button>
-      <button onclick="endSession()">End</button>
-      <button id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
-    </div>
-    <div class="centered">
-      <canvas id="posnerCanvas" width="1000" height="500"></canvas>
-    </div>
-    <div id="figure" style="width:600px;height:250px;"></div>
+      </div>
+      <div class="centered">
+        <button type="button" class="btn btn-dark" onclick="startSession()">Start</button>
+        <button type="button" class="btn btn-dark" onclick="endSession()">End</button>
+        <button type="button" class="btn btn-dark" id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
+      </div>
+      <div class="jumbotron">
+        <div class="d-flex flex-column">
+          <div class="p-2">
+            <canvas id="posnerCanvas" width="1000" height="500"></canvas>
+          </div>
+          <div class="p-2">
+            <div id="figure" style="width:1000px;height:500px;"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
   <script src="posner.js"></script>
 </body>
 </html>

@@ -1,0 +1,47 @@
+/* General Fonts */ 
+#bar-title {
+  font-size: 35px;
+}
+body {
+  font-family: "raleway", sans-serif;
+  color: #000000;
+  background: #dcdcdc;
+}
+
+.nav-item {
+  font-size:20px;
+}
+@media (max-width: 991.98px)
+.bd-navbar {
+  padding-right: .5rem;
+  padding-left: .5rem;
+}
+
+.bd-navbar {
+  min-height: 4rem;
+  background-color: #335171;
+  box-shadow: 0 0.5rem 1rem rgba(0,0,0,.05), inset 0 -1px 0 rgba(0, 0, 0, .1);
+}
+
+.flex-column {
+  -webkit-box-orient: vertical!important;
+  -webkit-box-direction: normal!important;
+  flex-direction: column!important;
+}
+
+.bd-content {
+  padding: 5rem;
+}
+
+.col-sm-4 {
+  padding: 10px;
+}
+
+canvas {
+  padding-right: 2rem;
+}
+
+#figure {
+  padding-left: 2rem;
+}
+

@@ -5,13 +5,32 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="../../javascript/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../../css/main.css">
   <title>Moving Dot Coherence</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="instructions">
-      <h1>Background</h1>
+  <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+    <a id="bar-title" class="navbar-brand" href="../../index.html">Neuroscience Activities</a>
+    <div class="navbar-nav-scroll">
+      <ul class="navbar-nav bd-navbar-nav flex-row">
+        <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link"
+                          href="https://github.com/mfliu/neuroActivitiesWebsite">Source</a></li>
+        <li class="nav-item"><a class="nav-link" 
+            href="mailto:monicaliu@pitt.edu">Feedback</a></li>
+      </ul>
+    </div>
+  </header>
+  
+  <div class="container-fluid">
+    <main class="bd-content" role="main">
+    <h1 class="bd-title">Moving Dot Coherence Task</h1>
+      <div class="instructions">
+      <h2>Background</h2>
       <p>
         How do our brains make decisions about the things we see? In order to study the neural basis
         of decision making, Shadlen and Newsome devised an experiment in which nonhuman primates
@@ -26,7 +45,8 @@
         the dots were moving to the left, however, Shadlen and Newsome found that they could predict
         the choice the monkey was going to make based on how many rightward neurons were responding
         compared to leftward neurons. 
-          
+        <br/>
+        <br/>
         In the moving-dot coherence task, when 50% of the dots
         are moving to the left and 50% of dots are moving to the right, theoretically one has no
         idea which direction the dots are moving as a whole. Neurons in MT, however, can have a
@@ -37,7 +57,7 @@
         in. As the proportion of dots moving towards a particular direction increases, however, you
         become more and more certain of the direction. Try it yourself below!
       </p>
-      <h1>Instructions</h1>
+      <h2>Instructions</h2>
       <p>
         First, a screen with a cross will be presented. Focus on the cross for several moments.
         After this, a screen of moving dots will appear for several seconds, after which you will
@@ -48,14 +68,22 @@
       </p>
     </div>
     <div class="centered">
-      <button onclick="startSession()">Start</button>
-      <button onclick="endSession()">End</button>
-      <button id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
+      <button type="button" class="btn btn-dark" onclick="startSession()">Start</button>
+      <button type="button" class="btn btn-dark" onclick="endSession()">End</button>
+      <button type="button" class="btn btn-dark" id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
     </div>
-    <div class="centered">
-      <canvas id="dotCanvas" with="300" height="300"></canvas>
+    <div class="jumbotron">
+      <div class="d-flex flex-row">
+        <div class="p-2">
+          <canvas id="dotCanvas" width="500px" height="500px";></canvas>
+       </div>
+        <div class="p-2">
+          <div id="figure" style="width:500px;height:500px"></div>
+        </div>
+      </div>
     </div>
-    <div id="figure" style="width:600px;height:250px;"></div>
+    <main>
+  </div>
   <script src="coherence.js"></script>
 </body>
 </html>

@@ -1,18 +1,77 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Neuro Activities</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Neuroscience Activities</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
   </head>
 
   <body>
-    <a href="activities/stroop/stroop.html">Stroop Task</a>
-    <br/>
-    <a href="activities/movingDotCoherence/coherence.html">Moving Dot Coherence</a>
-    <br/>
-    <a href="activities/vmr/vmr.html">Visuomotor Rotation</a>
-    <br/>
-    <a href="activities/posnerAttention/posner.html">Posner Attention</a>
-    <br/>
-    <a href="activities/nback/nback.html">n-Back Working Memory</a>
+    <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+      <a id="bar-title" class="navbar-brand" href="/">Neuroscience Activities</a>
+      <div class="navbar-nav-scroll">
+        <ul class="navbar-nav bd-navbar-nav flex-row">
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link"
+                            href=https://github.com/mfliu/neuroActivitiesWebsite>Source</a></li>
+          <li class="nav-item"><a class="nav-link" 
+              href="mailto:monicaliu@pitt.edu">Feedback</a></li>
+        </ul>
+      </div>
+    </header>
+    <div class="container-fluid">
+      <main class="bd-content" role="main">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card"> 
+              <div class="card-body">
+                <h5 class="card-title">Perceptual Decision Making</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Moving Dot Coherence Task</h6>
+                <a class="card-link" href="activities/movingDotCoherence/coherence.html">View</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Motor Adaptation</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Visuomotor Rotation Task</h6>
+                <a class="card-link" href="activities/vmr/vmr.html">View</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Attention</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Posner Attention Task</h6>
+                <a class="card-link" href="activities/posnerAttention/posner.html">View</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Working Memory</h5>
+                <h6 class="card-subtitle">n-Back Task</h6>
+                <a class="card-link" href="activities/nback/nback.html">View</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Cognitive Interference</h5>
+                <h6 class="card-subtitle">Stroop Task</h6>
+                <a class="card-link" href="activities/stroop/stroop.html">View</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   </body>
 </html>

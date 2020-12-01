@@ -5,13 +5,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <script src="../../javascript/plotly-latest.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../../css/main.css">
   <title>Visuomotor Rotation</title>
 </head>
 
 <body>
-  <div class="container">
+  <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar">
+    <a id="bar-title" class="navbar-brand" href="../../index.html">Neuroscience Activities</a>
+    <div class="navbar-nav-scroll">
+      <ul class="navbar-nav bd-navbar-nav flex-row">
+        <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../about.html">About</a></li>
+        <li class="nav-item"><a class="nav-link"
+                          href="https://github.com/mfliu/neuroActivitiesWebsite">Source</a></li>
+        <li class="nav-item"><a class="nav-link" 
+            href="mailto:monicaliu@pitt.edu">Feedback</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="container-fluid">
+    <main class="bd-content" role="main">
+    <h1 class="bd-title">Visuomotor Rotation Task</h1>
     <div class="instructions">
-      <h1>Background</h1>
+      <h2>Background</h2>
       <p>
         Motor learning and motor control is a broad subfield of neuroscience that has generated many
         different tasks and studies. One of the most famous is the visuomotor rotation (VMR) task.
@@ -22,7 +40,7 @@
         rotation effect is removed, there is a "washout" period in which the subject's arm is
         shifted relative to the straight-line path between the two targets. 
       </p>
-      <h1>Instructions</h1>
+      <h2>Instructions</h2>
       <p>
         Move the cursor (yellow dot), to the the starting position (gray circle). When the cursor
         turns blue, move it to the target (green circle). Unlike some of the other tasks, a
@@ -31,14 +49,22 @@
       </p>
     </div>
     <div class="centered">
-      <button onclick="startSession()">Start</button>
-      <button onclick="endSession()">End</button>
-      <button id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
+      <button type="button" class="btn btn-dark" onclick="startSession()">Start</button>
+      <button type="button" class="btn btn-dark" onclick="endSession()">End</button>
+      <button type="button" class="btn btn-dark" id="saveButton" style="visibility:hidden" onclick="saveData()">Save CSV Data</button>
     </div>
-    <div class="centered">
-      <canvas id="vmrCanvas" width="600" height="500"></canvas>
+    <div class="jumbotron">
+      <div class="d-flex flex-row">
+        <div class="p-2">
+          <canvas id="vmrCanvas" width="600" height="500"></canvas>
+        </div>
+        <div class="p-2">
+          <div id="figure" style="width:600px;height:500px;"></div>
+        </div>
+      </div>
     </div>
-    <div id="figure" style="width:600px;height:250px;"></div>
+    </main>
+  </div>
   <script src="vmr.js"></script>
 </body>
 </html>

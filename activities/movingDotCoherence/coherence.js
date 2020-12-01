@@ -194,7 +194,16 @@ function plotData() {
   Plotly.react(figure,  [{
     x: coherenceList,
     y: dataPoints,
-    }]);
+    }],
+    {
+      xaxis: {
+        title: "Proportion Dots Moving Right"
+      },
+      yaxis: {
+        title: "Proportion Trials Selected Right"
+      },
+    }
+  );
 }
 
 

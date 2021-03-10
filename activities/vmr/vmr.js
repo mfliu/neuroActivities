@@ -3,47 +3,74 @@ const VMRTrials = 15;
 const WashoutTrials = 10;
 const Rotation = 30; // degrees
 
-// Task state variables 
-var state = {
-  running: false,
-  taskState: null,
-  trialType: null,
-  numTrials: 0,
-  trialStart: null,
-  canvas: document.getElementById("vmrCanvas"),
-  figure: document.getElementById('figure')
-};
+// Create global state and data variables
+var state = initState()
+var data = initData()
 
-// Data variables
-var data = {
-  trialNum: [],
-  trialPhase:[], 
-  trialType: [],
-  time: [],
-  cursorX: [],
-  cursorY: [],
-  handX: [],
-  handY:[]
-  // For plotting
-};
+// Returns initial state data.
+function initState() {
+  return {
+    running: false,
+    taskState: null,
+    trialType: null,
+    numTrials: 0,
+    trialStart: null,
+    canvas: document.getElementById("vmrCanvas"),
+    figure: document.getElementById('figure')
+  };
+}
 
-function startSession() {
+// Returns initial data structure for stored data.
+function initData() {
+  return {
+    trialNum: [],
+    trialPhase:[], 
+    trialType: [],
+    time: [],
+    cursorX: [],
+    cursorY: [],
+    handX: [],
+    handY:[]
+    // For plotting
+  };
+}
+
+// Does the reset
+async function resetData() {
+  state.taskState = null;
+  state.trialType = null;
+  state.numTrials = 0;
+  state.trialStart = null;
+  data = initData()
+  document.getElementById("saveButton").style.visibility = "hidden";
   Plotly.newPlot( state.figure, [{
     x: [], 
     y: [],
     }],
     {
       xaxis: {
-        title: "X Position"
+        title: "X Position", 
+        range: [0, 600]
       },
       yaxis: {
-        title: "Y Position"
+        title: "Y Position", 
+        range: [0, 500]
       },
     }
   );
+  baseGraphics();
+  if (state.running) {
+    state.running = false;
+    await sleep(500);
+    newTrial();
+  }
+}
+
+// Start the "recording" session.
+function startSession() {
+  resetData();
   state.canvas.style.cursor = 'none';
   state.running = true;
-  baseGraphics();
   newTrial();
 }
 
@@ -149,6 +176,7 @@ function startCheck(posX, posY) {
   return false;
 }
 
+// Check if the cursor has entered the target.
 function targetCheck(posX, posY) {
   let radius = Math.sqrt(Math.pow(25 - posY, 2) +
                 Math.pow(posX - state.canvas.width/2, 2));
@@ -197,6 +225,7 @@ function runTrial(posX, posY) {
   }
 }
 
+// End the current trial by updating state parameters.
 async function endTrial() {
   baseGraphics();
   plotData();
@@ -206,6 +235,7 @@ async function endTrial() {
   newTrial();
 }
 
+// Show data on the plot at the right-hand side of interface.
 function plotData() {
   let startIdx = data.trialNum.indexOf(state.numTrials);
   let endIdx = data.trialNum.lastIndexOf(state.numTrials);
@@ -239,21 +269,25 @@ function plotData() {
     }],
     {
       xaxis: {
-        title: "X Position"
+        title: "X Position", 
+        range: [0, 600]
       },
       yaxis: {
-        title: "Y Position"
+        title: "Y Position", 
+        range: [0, 500]
       },
     }
   );
 }
 
-
+// End the "recording" session (no more trials)
 function endSession() {
   state.taskState = "done";
-  saveButton = document.getElementById("saveButton").style.visibility = "visible";
+  document.getElementById("saveButton").style.visibility = "visible";
+  state = initState(); // reset the state
 }
 
+// Save data to a csv file
 function saveData() {
   var rows = [["trialNum", "trialPhase", "trialType", "time",
                 "cursorX", "cursorY", "handX", "handY"]];
